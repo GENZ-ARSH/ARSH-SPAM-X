@@ -29,8 +29,8 @@ async def help(event):
             Button.inline("⚡️ ᴇxᴛʀᴀ ⚡️", data="extra"),
            ],
            [    
-            Button.url("⚡️ ᴄʜᴀɴɴᴇʟ ⚡️", "https://t.me/SHIVANSH474"),
-            Button.url("⚡️ sᴜᴘᴘᴏʀᴛ ⚡️", "https://t.me/MASTIWITHFRIENDSXD")
+            Button.url("⚡️ ᴄʜᴀɴɴᴇʟ ⚡️", "https://t.me/botxhubop"),
+            Button.url("⚡️ sᴜᴘᴘᴏʀᴛ ⚡️", "https://t.me/botxhubchat")
            ],
            ],
            )
@@ -103,7 +103,7 @@ spam_msg = f"""
   1) {hl}hang <counter> (you can reply any message if you want bot to reply that message and do spamming)
 
 
-** © @SHIVANSHDEVS**
+** © @botxhubop**
 """                     
            
            
@@ -130,13 +130,13 @@ async def helpback(event):
             Button.inline("⚡️ ᴇxᴛʀᴀ ⚡️", data="extra"),
            ],
            [
-            Button.url("⚡️ ᴄʜᴀɴɴᴇʟ ⚡️", "https://t.me/SHIVANSH474"),
-            Button.url("⚡️ sᴜᴘᴘᴏʀᴛ ⚡️", "https://t.me/MASTIWITHFRIENDSXD")
+            Button.url("⚡️ ᴄʜᴀɴɴᴇʟ ⚡️", "https://t.me/botxhubop"),
+            Button.url("⚡️ sᴜᴘᴘᴏʀᴛ ⚡️", "https://t.me/botxhubchat")
            ],
            ],
         )           
    else:
-        await event.answer("𝗣ᴀʜʟᴇ 𝗝ᴀᴀᴋᴇ 𝗣ᴀᴘᴀ 𝗕ᴏʟ ⚡️𝐒𝐇𝐈𝐕𝐀𝐍𝐒𝐇⚡️ 𝗞ᴏ 𝗪ᴏ 𝗧ᴜᴍʜᴇ 𝗦ᴜᴅᴏ 𝗗ᴇ 𝗗ᴇɢᴀ", cache_time=0, alert=True)
+        await event.answer("𝗣ᴀʜʟᴇ 𝗝ᴀᴀᴋᴇ 𝗣ᴀᴘᴀ 𝗕ᴏʟ ⚡️𝐀𝐑𝐒𝐇⚡️ 𝗞ᴏ 𝗪ᴏ 𝗧ᴜᴍʜᴇ 𝗦ᴜᴅᴏ 𝗗ᴇ 𝗗ᴇɢᴀ", cache_time=0, alert=True)
 
 
 @MK1.on(events.CallbackQuery(pattern=r"spam"))
@@ -155,7 +155,7 @@ async def help_spam(event):
             buttons=[[Button.inline("< Back", data="help_back"),],],
             ) 
    else:
-        await event.answer("𝗣ᴀʜʟᴇ 𝗝ᴀᴀᴋᴇ 𝗣ᴀᴘᴀ 𝗕ᴏʟ ⚡️𝐒𝐇𝐈𝐕𝐀𝐍𝐒𝐇⚡️ 𝗞ᴏ 𝗪ᴏ 𝗧ᴜᴍʜᴇ 𝗦ᴜᴅᴏ 𝗗ᴇ 𝗗ᴇɢᴀ", cache_time=0, alert=True)
+        await event.answer("𝗣ᴀʜʟᴇ 𝗝ᴀᴀᴋᴇ 𝗣ᴀᴘᴀ 𝗕ᴏʟ ⚡️𝐀𝐑𝐒𝐇⚡️ 𝗞ᴏ 𝗪ᴏ 𝗧ᴜᴍʜᴇ 𝗦ᴜᴅᴏ 𝗗ᴇ 𝗗ᴇɢᴀ", cache_time=0, alert=True)
 
 
 @MK1.on(events.CallbackQuery(pattern=r"raid"))
@@ -174,7 +174,7 @@ async def help_raid(event):
             buttons=[[Button.inline("< Back", data="help_back"),],],
             )  
      else:
-        await event.answer("𝗣ᴀʜʟᴇ 𝗝ᴀᴀᴋᴇ 𝗣ᴀᴘᴀ 𝗕ᴏʟ ⚡️𝐒𝐇𝐈𝐕𝐀𝐍𝐒𝐇⚡️ 𝗞ᴏ 𝗪ᴏ 𝗧ᴜᴍʜᴇ 𝗦ᴜᴅᴏ 𝗗ᴇ 𝗗ᴇɢᴀ", cache_time=0, alert=True)
+        await event.answer("𝗣ᴀʜʟᴇ 𝗝ᴀᴀᴋᴇ 𝗣ᴀᴘᴀ 𝗕ᴏʟ ⚡️𝐀𝐑𝐒𝐇⚡️ 𝗞ᴏ 𝗪ᴏ 𝗧ᴜᴍʜᴇ 𝗦ᴜᴅᴏ 𝗗ᴇ 𝗗ᴇɢᴀ", cache_time=0, alert=True)
 
 
 @MK1.on(events.CallbackQuery(pattern=r"extra"))
@@ -193,4 +193,4 @@ async def help_extra(event):
             buttons=[[Button.inline("< Back", data="help_back"),],],
             )
    else:
-        await event.answer("𝗣ᴀʜʟᴇ 𝗝ᴀᴀᴋᴇ 𝗣ᴀᴘᴀ 𝗕ᴏʟ ⚡️𝐒𝐇𝐈𝐕𝐀𝐍𝐒𝐇⚡️ 𝗞ᴏ 𝗪ᴏ 𝗧ᴜᴍʜᴇ 𝗦ᴜᴅᴏ 𝗗ᴇ 𝗗ᴇɢᴀ", cache_time=0, alert=True)
+        await event.answer("𝗣ᴀʜʟᴇ 𝗝ᴀᴀᴋᴇ 𝗣ᴀᴘᴀ 𝗕ᴏʟ ⚡️𝐀𝐑𝐒𝐇⚡️ 𝗞ᴏ 𝗪ᴏ 𝗧ᴜᴍʜᴇ 𝗦ᴜᴅᴏ 𝗗ᴇ 𝗗ᴇɢᴀ", cache_time=0, alert=True)

@@ -5,6 +5,8 @@ from datetime import datetime
 from config import MK1, MK2, MK3, MK4, MK5 , MK6, MK7, MK8, MK9, MK10, OWNER_ID, SUDO_USERS, HEROKU_APP_NAME, HEROKU_API_KEY, CMD_HNDLR as hl
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon import events
+from .sudo_manager import add_sudo_user, remove_sudo_user, is_sudo_user
+from utils import edit_or_reply
 
 
 @MK1.on(events.NewMessage(incoming=True, pattern=r"\%sping(?: |$)(.*)" % hl))
@@ -87,42 +89,64 @@ async def restart(e):
 Heroku = heroku3.from_key(HEROKU_API_KEY)
 sudousers = os.environ.get("SUDO_USER", None)
 
-@MK1.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK2.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK3.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK4.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK5.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK6.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK7.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK8.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK9.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-@MK10.on(events.NewMessage(incoming=True, pattern=r"\%ssudo(?: |$)(.*)" % hl))
-async def addsudo(event):
-    if event.sender_id == OWNER_ID:
-        ok = await event.reply(f"» __ᴇᴋ ɴᴀʏᴀ⚡️sᴛʀᴀɴɢᴇʀ's⚡️ʙᴇᴛᴀ ᴀᴅᴅ ʜᴏ ʀʜᴀ...__")
-        mks = "SUDO_USER"
-        target = ""
-        if HEROKU_APP_NAME is not None:
-            app = Heroku.app(HEROKU_APP_NAME)
-        else:
-            await ok.edit("`[HEROKU]:" "\nPlease Setup Your` **HEROKU_APP_NAME**")
-            return
-        heroku_var = app.config()
-        if event is None:
-            return
+@MK1.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK2.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK3.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK4.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK5.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK6.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK7.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK8.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK9.on(events.NewMessage(pattern=r"\.addsudo"))
+@MK10.on(events.NewMessage(pattern=r"\.addsudo"))
+async def add_sudo(event):
+    if event.sender_id != OWNER_ID:
+        return await edit_or_reply(event, "⚠️ Only owner can add sudo users!")
+    
+    if event.reply_to_msg_id:
+        reply_msg = await event.get_reply_message()
+        user_id = reply_msg.sender_id
+    else:
+        # Try to get user ID from command arguments
         try:
-            reply_msg = await event.get_reply_message()
-            target = reply_msg.sender_id
-        except Exception:
-            await ok.edit("» ᴀʙᴇ ɢᴀɴᴅᴜ....ᴜsᴇʀ ᴘᴇ ʀᴇᴘʟʏ ᴋᴀʀʀ !!")
-        if len(sudousers) > 0:
-            newsudo = f"{sudousers} {target}"
-        else:
-            newsudo = f"{target}"
-        await ok.edit(f"» **ɴᴇᴡ⚡️sᴛʀᴀɴɢᴇʀ's ⚡️ʙᴇᴛᴀ**: `{target}`\n» `ʙᴏᴛ ғɪʀ sᴇ sᴜʀᴜ ʜᴏ ʀʜᴀ...`")
-        heroku_var[mks] = newsudo   
-   
-     
+            user_id = int(event.pattern_match.group(1))
+        except:
+            return await edit_or_reply(event, "⚠️ Please reply to a user or provide user ID!")
+    
+    if add_sudo_user(user_id):
+        await edit_or_reply(event, f"✅ Successfully added user {user_id} as sudo!")
+    else:
+        await edit_or_reply(event, f"⚠️ User {user_id} is already a sudo user!")
+
+@MK1.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK2.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK3.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK4.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK5.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK6.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK7.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK8.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK9.on(events.NewMessage(pattern=r"\.delsudo"))
+@MK10.on(events.NewMessage(pattern=r"\.delsudo"))
+async def del_sudo(event):
+    if event.sender_id != OWNER_ID:
+        return await edit_or_reply(event, "⚠️ Only owner can remove sudo users!")
+    
+    if event.reply_to_msg_id:
+        reply_msg = await event.get_reply_message()
+        user_id = reply_msg.sender_id
+    else:
+        # Try to get user ID from command arguments
+        try:
+            user_id = int(event.pattern_match.group(1))
+        except:
+            return await edit_or_reply(event, "⚠️ Please reply to a user or provide user ID!")
+    
+    if remove_sudo_user(user_id):
+        await edit_or_reply(event, f"✅ Successfully removed user {user_id} from sudo!")
+    else:
+        await edit_or_reply(event, f"⚠️ User {user_id} is not a sudo user!")
+
 async def get_user(event):
     if event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
